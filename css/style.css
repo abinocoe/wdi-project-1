@@ -15,3 +15,7 @@ li {
   border: 2px solid #AA1FB7;
   float: left;
 }
+
+.light {
+  background: #AA1FB7;
+}
