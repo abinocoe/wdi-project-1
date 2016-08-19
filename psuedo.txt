@@ -1,0 +1,10 @@
+SWITCH OFF
+
+Grid of squares. Aim of the game is to switch off all the lights.
+
+Must have a clickable grid 
+Board must load with some pre-determined squares on the grid displayed as lit.
+Each click will toggle the style of the clicked element - and also the styles of the four immediately abutting elements.
+After each click will check to determine if a win has been achieved
+Must display the number of clicks used in that round
+Once a round has been completed, after a short delay will load the next round

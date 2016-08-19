@@ -1,3 +1,17 @@
 body {
-  background: green;
+  background: #E2E2E2;
+}
+
+ul {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+li {
+  width: 96px;
+  height: 96px;
+  border: 2px solid #AA1FB7;
+  float: left;
 }
