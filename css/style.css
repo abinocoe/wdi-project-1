@@ -2,7 +2,7 @@ body {
   background: #E2E2E2;
   font-family: 'Quicksand', sans-serif;
   text-align: center;
-  color: #F3F315;
+  color: DarkGrey;
 }
 
 h1 {
@@ -16,8 +16,14 @@ h1 {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FFDD1B, 0 0 35px #FFDD1B, 0 0 40px #FFDD1B, 0 0 50px #FFDD1B, 0 0 75px #FFDD1B;
 }
 
+h2 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
 h3 {
   margin: 10px;
+  color: DarkGrey;
 }
 
 ul {
@@ -31,7 +37,8 @@ li {
   width: 86px;
   height: 86px;
   padding: 5px;
-  border: 2px solid grey;
+  border: 1px solid grey;
+  margin: 1px;
   border-radius: 5px;
   float: left;
 }
