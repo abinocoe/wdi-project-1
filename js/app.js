@@ -11,55 +11,46 @@ litUp.getIndex = function() {
   var a        = Math.sqrt($boxes.length);
   if ($index % a === 0) {
     if ($index > 0 && $index < ($boxes.length)-a) {
-      $($boxes[$index]).toggleClass('light');
-      $($boxes[$index+1]).toggleClass('light');
-      $($boxes[$index-a]).toggleClass('light');
-      $($boxes[$index+a]).toggleClass('light');
+      leftSide = [($index), ($index+1), ($index-a), ($index+a)];
+      litUp.toggler($boxes, leftSide);
     } else if ($index === 0) {
-      $($boxes[$index]).toggleClass('light');
-      $($boxes[$index+1]).toggleClass('light');
-      $($boxes[$index+a]).toggleClass('light');
+      topLeft = [($index), ($index+1), ($index+a)];
+      litUp.toggler($boxes, topLeft);
     } else {
-      $($boxes[$index]).toggleClass('light');
-      $($boxes[$index+1]).toggleClass('light');
-      $($boxes[$index-a]).toggleClass('light');
+      bottomLeft = [($index), ($index+1), ($index-a)];
+      litUp.toggler($boxes, bottomLeft);
     }
   } else if ($index % a === 4) {
     if ($index > (a-1) && $index < ($boxes.length)-1) {
-      $($boxes[$index]).toggleClass('light');
-      $($boxes[$index-a]).toggleClass('light');
-      $($boxes[$index+a]).toggleClass('light');
-      $($boxes[$index-1]).toggleClass('light');
+      rightSide = [($index), ($index-1), ($index-a), ($index+a)];
+      litUp.toggler($boxes, rightSide);
     } else if ($index === (a-1)) {
-      $($boxes[$index]).toggleClass('light');
-      $($boxes[$index-1]).toggleClass('light');
-      $($boxes[$index+a]).toggleClass('light');
+      topRight = [($index), ($index-1), ($index+a)];
+      litUp.toggler($boxes, topRight);
     } else {
-      $($boxes[$index]).toggleClass('light');
-      $($boxes[$index-a]).toggleClass('light');
-      $($boxes[$index-1]).toggleClass('light');
+      bottomRight = [($index), ($index+1), ($index-a), ($index+a)];
+      litUp.toggler($boxes, bottomRight);
     }
   } else if ($index > 0 && $index < (a-2)) {
-    $($boxes[$index]).toggleClass('light');
-    $($boxes[$index-1]).toggleClass('light');
-    $($boxes[$index+1]).toggleClass('light');
-    $($boxes[$index+a]).toggleClass('light');
+    topRow = [($index), ($index-1), ($index+1), ($index+a)];
+    litUp.toggler($boxes, topRow);
   } else if ($index >= ($boxes.length)-a && $index < ($boxes.length)-1) {
-    $($boxes[$index]).toggleClass('light');
-    $($boxes[$index-1]).toggleClass('light');
-    $($boxes[$index+1]).toggleClass('light');
-    $($boxes[$index-a]).toggleClass('light');
+    bottomRow = [($index), ($index+1), ($index-a), ($index+a)];
+    litUp.toggler($boxes, bottomRow);
   } else {
-    $($boxes[$index]).toggleClass('light');
-    $($boxes[$index-1]).toggleClass('light');
-    $($boxes[$index+1]).toggleClass('light');
-    $($boxes[$index-a]).toggleClass('light');
-    $($boxes[$index+a]).toggleClass('light');
+    central = [($index), ($index-1), ($index+1), ($index-a), ($index+a)];
+    litUp.toggler($boxes, central);
   }
-  console.log($boxes);
   litUp.updateCount();
   litUp.checkWin($boxes);
 }
+
+litUp.toggler = function(elements, array) {
+  $.each(array, function(i, v) {
+    $(elements[v]).toggleClass('light');
+  });
+};
+
 
 litUp.updateCount = function() {
   this.moves++;
@@ -69,20 +60,17 @@ litUp.updateCount = function() {
 litUp.checkWin = function(array) {
   if ($(array).hasClass('light') === false) {
     console.log("you've won!");
+    this.moves = 0;
     $('h2').text("0");
     litUp.nextLevel(array);
   }
 }
 
 litUp.nextLevel = function(array) {
-  console.log(array);
-  levelTwo = [4,5,10,11,16,17,21]
-  $.each(levelTwo, function(index, value) {
-    $(array[value]).toggleClass('light');
+  levelTwo = [3,4,5,10,11,13,14,19,20,21]
+  $.each(levelTwo, function(i, v) {
+    $(array[v]).toggleClass('light');
   });
-  // $.each( levelTwo, function( key, value ) {
-  //   $(array[value]).toggleClass('light');
-  // });
 }
 
 $(function() { litUp.setup() });
