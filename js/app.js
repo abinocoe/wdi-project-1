@@ -2,6 +2,7 @@ var litUp = litUp || {};
 
 litUp.setup = function() {
   $('li').click(litUp.getIndex);
+  this.moves = 0;
 }
 
 litUp.getIndex = function() {
@@ -55,7 +56,13 @@ litUp.getIndex = function() {
     $($boxes[index-a]).toggleClass('light');
     $($boxes[index+a]).toggleClass('light');
   }
+  litUp.updateCount();
   litUp.checkWin();
+}
+
+litUp.updateCount = function() {
+  this.moves++;
+  $('h2').text(this.moves);
 }
 
 litUp.checkWin = function() {
