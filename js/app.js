@@ -11,35 +11,26 @@ litUp.getIndex = function() {
   var a        = Math.sqrt($boxes.length);
   if ($index % a === 0) {
     if ($index > 0 && $index < ($boxes.length)-a) {
-      leftSide = [($index), ($index+1), ($index-a), ($index+a)];
-      litUp.toggler($boxes, leftSide);
+      litUp.toggler($boxes, [($index), ($index+1), ($index-a), ($index+a)]);
     } else if ($index === 0) {
-      topLeft = [($index), ($index+1), ($index+a)];
-      litUp.toggler($boxes, topLeft);
+      litUp.toggler($boxes, [($index), ($index+1), ($index+a)]);
     } else {
-      bottomLeft = [($index), ($index+1), ($index-a)];
-      litUp.toggler($boxes, bottomLeft);
+      litUp.toggler($boxes, [($index), ($index+1), ($index-a)]);
     }
   } else if ($index % a === 4) {
     if ($index > (a-1) && $index < ($boxes.length)-1) {
-      rightSide = [($index), ($index-1), ($index-a), ($index+a)];
-      litUp.toggler($boxes, rightSide);
+      litUp.toggler($boxes, [($index), ($index-1), ($index-a), ($index+a)]);
     } else if ($index === (a-1)) {
-      topRight = [($index), ($index-1), ($index+a)];
-      litUp.toggler($boxes, topRight);
+      litUp.toggler($boxes, [($index), ($index-1), ($index+a)]);
     } else {
-      bottomRight = [($index), ($index+1), ($index-a), ($index+a)];
-      litUp.toggler($boxes, bottomRight);
+      litUp.toggler($boxes, [($index), ($index+1), ($index-a), ($index+a)]);
     }
   } else if ($index > 0 && $index < (a-2)) {
-    topRow = [($index), ($index-1), ($index+1), ($index+a)];
-    litUp.toggler($boxes, topRow);
+    litUp.toggler($boxes, [($index), ($index-1), ($index+1), ($index+a)]);
   } else if ($index >= ($boxes.length)-a && $index < ($boxes.length)-1) {
-    bottomRow = [($index), ($index+1), ($index-a), ($index+a)];
-    litUp.toggler($boxes, bottomRow);
+    litUp.toggler($boxes, [($index), ($index+1), ($index-a), ($index+a)]);
   } else {
-    central = [($index), ($index-1), ($index+1), ($index-a), ($index+a)];
-    litUp.toggler($boxes, central);
+    litUp.toggler($boxes, [($index), ($index-1), ($index+1), ($index-a), ($index+a)]);
   }
   litUp.updateCount();
   litUp.checkWin($boxes);
