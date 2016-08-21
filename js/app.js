@@ -1,39 +1,51 @@
 var litUp = litUp || {};
 
 litUp.setup = function() {
-  $('li').click(litUp.getIndex);
   this.moves = 0;
-}
+  this.level = 0;
+  var $boxes = $('li').toArray();
+  litUp.loadLevel($boxes, this.level);
+  $('li').on("click", function() {
+    litUp.getIndex($boxes)
+  });
+};
 
-litUp.getIndex = function() {
-  var $index   = $('li').index(this);
-  var $boxes   = $('li').toArray();
-  var a        = Math.sqrt($boxes.length);
+litUp.getIndex = function(buttons) {
+  var $index   = $('li').index(event.target);
+  var a        = Math.sqrt(buttons.length);
   if ($index % a === 0) {
-    if ($index > 0 && $index < ($boxes.length)-a) {
-      litUp.toggler($boxes, [($index), ($index+1), ($index-a), ($index+a)]);
+    if ($index > 0 && $index < (buttons.length)-a) {
+      litUp.toggler(buttons, [($index), ($index+1), ($index-a), ($index+a)]);
     } else if ($index === 0) {
-      litUp.toggler($boxes, [($index), ($index+1), ($index+a)]);
+      litUp.toggler(buttons, [($index), ($index+1), ($index+a)]);
     } else {
-      litUp.toggler($boxes, [($index), ($index+1), ($index-a)]);
+      litUp.toggler(buttons, [($index), ($index+1), ($index-a)]);
     }
   } else if ($index % a === 4) {
-    if ($index > (a-1) && $index < ($boxes.length)-1) {
-      litUp.toggler($boxes, [($index), ($index-1), ($index-a), ($index+a)]);
+    if ($index > (a-1) && $index < (buttons.length)-1) {
+      litUp.toggler(buttons, [($index), ($index-1), ($index-a), ($index+a)]);
     } else if ($index === (a-1)) {
-      litUp.toggler($boxes, [($index), ($index-1), ($index+a)]);
+      litUp.toggler(buttons, [($index), ($index-1), ($index+a)]);
     } else {
-      litUp.toggler($boxes, [($index), ($index+1), ($index-a), ($index+a)]);
+      litUp.toggler(buttons, [($index), ($index+1), ($index-a), ($index+a)]);
     }
   } else if ($index > 0 && $index < (a-2)) {
-    litUp.toggler($boxes, [($index), ($index-1), ($index+1), ($index+a)]);
-  } else if ($index >= ($boxes.length)-a && $index < ($boxes.length)-1) {
-    litUp.toggler($boxes, [($index), ($index+1), ($index-a), ($index+a)]);
+    litUp.toggler(buttons, [($index), ($index-1), ($index+1), ($index+a)]);
+  } else if ($index >= (buttons.length)-a && $index < (buttons.length)-1) {
+    litUp.toggler(buttons, [($index), ($index+1), ($index-a), ($index+a)])
   } else {
-    litUp.toggler($boxes, [($index), ($index-1), ($index+1), ($index-a), ($index+a)]);
+    litUp.toggler(buttons, [($index), ($index-1), ($index+1), ($index-a), ($index+a)]);
   }
   litUp.updateCount();
-  litUp.checkWin($boxes);
+  litUp.checkWin(buttons);
+}
+
+litUp.loadLevel = function(board, levelNo) {
+  this.levels = [[3,7,8,9,11,13,15,16,17,21],
+                [3,4,5,10,11,13,14,19,20,21],
+                [1,5,7,8,10,14,16,17,19,23],
+                [3,4,6,7,8,9,10,12,14,15,16,17,18,20,21]];
+  litUp.toggler(board, this.levels[levelNo]);
 }
 
 litUp.toggler = function(elements, array) {
@@ -48,20 +60,14 @@ litUp.updateCount = function() {
   $('h2').text(this.moves);
 }
 
-litUp.checkWin = function(array) {
-  if ($(array).hasClass('light') === false) {
+litUp.checkWin = function(elements) {
+  if ($(elements).hasClass('light') === false) {
     console.log("you've won!");
-    this.moves = 0;
     $('h2').text("0");
-    litUp.nextLevel(array);
+    this.moves = 0;
+    this.level++;
+    litUp.loadLevel(elements, this.level);
   }
-}
-
-litUp.nextLevel = function(array) {
-  levelTwo = [3,4,5,10,11,13,14,19,20,21]
-  $.each(levelTwo, function(i, v) {
-    $(array[v]).toggleClass('light');
-  });
 }
 
 $(function() { litUp.setup() });
