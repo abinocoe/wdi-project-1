@@ -40,7 +40,19 @@ li {
   border: 1px solid grey;
   margin: 4px;
   border-radius: 5px;
+  position: relative;
   float: left;
+  animation-name: flip;
+  animation-duration: 2s;
+  -webkit-transform-origin: top;
+  transform-origin: top;
+}
+
+@-webkit-keyframes flip {
+  0% { -webkit-transform: rotateX(270deg);    }
+  25%   { -webkit-transform: rotateX(400deg); }
+  75%   { -webkit-transform: rotateX(310deg); }
+  100%  { -webkit-transform: rotateX(360deg); }
 }
 
 .light {
@@ -55,14 +67,4 @@ li {
   border: none;
   background-color: #fff;
   box-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 1px #fff, 0 0 2px #FFDD1B, 0 0 3px #FFDD1B, 0 0 4px #FFDD1B, 0 0 5px #FFDD1B, 0 0 17px #FFDD1B
-}
-
-
-@-webkit-keyframes neon1 {
-  from {
-    -webkit-box-shadow: 6px -1px 150px 3px rgba(0,0,0,0.75);
-  }
-  to {
-    -webkit-box-shadow: 4px -2px 100px 2px rgba(0,0,0,0.75);
-  }
 }
