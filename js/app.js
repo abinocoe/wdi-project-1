@@ -45,7 +45,10 @@ litUp.loadLevel = function(board, levelNo) {
   [3,4,5,10,11,13,14,19,20,21],
   [1,5,7,8,10,14,16,17,19,23],
   [3,4,6,7,8,9,10,12,14,15,16,17,18,20,21],
-  [2,7,10,11,13,14,17,22]];
+  [2,7,10,11,13,14,17,22],,
+  [1,2,5,6,10,14,18,19,22,23]
+  [0,2,8,10,14,16,22,24],
+  [2,3,5,6,9,11,12,13,14,16,17,19,23,24]];
   litUp.toggler(board, this.levels[levelNo]);
 }
 
@@ -57,13 +60,13 @@ litUp.toggler = function(elements, array) {
 
 litUp.updateCount = function() {
   this.moves++;
-  $('h2').text(this.moves);
+  $('span').text(this.moves);
 }
 
 litUp.checkWin = function(elements) {
   if ($(elements).hasClass('light') === false) {
     console.log("you've won!");
-    $('h2').text("0");
+    $('span').text("0");
     this.moves = 0;
     this.level++;
     litUp.loadLevel(elements, this.level);
