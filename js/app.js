@@ -9,14 +9,15 @@ litUp.setup = function() {
   [1,5,7,8,10,14,16,17,19,23],
   [3,4,6,7,8,9,10,12,14,15,16,17,18,20,21],
   [2,7,10,11,13,14,17,22],
-  [1,2,5,6,10,14,18,19,22,23]
-  [0,2,8,10,14,16,22,24],
-  [2,3,5,6,9,11,12,13,14,16,17,19,23,24]];
+  [1,2,5,6,10,14,18,19,22,23],
+  [2,3,5,6,9,11,12,13,14,16,17,19,23,24],
+  [0,2,8,10,14,16,22,24]];
   litUp.loadLevel();
-  console.log(this.level)
   $('li').on("click", function() {
     litUp.getIndex($boxes)
   });
+  $('#replay').on('mouseup', litUp.replay.bind(this));
+  $('#next').on('mouseup', litUp.next.bind(this));
 };
 
 litUp.getIndex = function(buttons) {
@@ -66,7 +67,6 @@ litUp.updateCount = function() {
 
 litUp.checkWin = function(elements) {
   if ($(elements).hasClass('light') === false) {
-    console.log("you've won!");
     $('span').text("0");
     this.moves = 0;
     litUp.modalMe();
@@ -75,20 +75,17 @@ litUp.checkWin = function(elements) {
 
 litUp.modalMe = function() {
   $('#modal').toggle();
-  $('#replay').on('click', litUp.replay.bind(this));
-  $('#next').on('click', litUp.next.bind(this));
 }
 
 litUp.replay = function() {
-  console.log(this.level)
   litUp.loadLevel();
-  $('#modal').toggle();
+  $('#modal').hide();
 }
 
 litUp.next = function() {
   this.level++;
   litUp.loadLevel();
-  $('#modal').toggle();
+  $('#modal').hide();
 }
 
 $(function() { litUp.setup() });
