@@ -17,6 +17,7 @@ litUp.setup = function() {
   $('li').on('click', function() {litUp.getIndex($boxes)});
   $('#replay').on('mouseup', litUp.replay.bind(this));
   $('#next').on('mouseup', litUp.next.bind(this));
+  $('#reset').on('click', litUp.reset.bind(this));
   litUp.loadLevel();
 };
 
@@ -77,6 +78,12 @@ litUp.checkWin = function(elements) {
 litUp.modalMe = function() {
   $('#modal').show();
   $($boxes).off();
+}
+
+litUp.reset = function() {
+  $('li').removeClass('light');
+  console.log(this);
+  litUp.loadLevel();
 }
 
 litUp.replay = function() {

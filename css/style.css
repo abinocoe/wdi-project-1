@@ -60,9 +60,6 @@ aside {
   position: relative;
   height: 150px;
   width: 150px;
-  border: 5px solid DarkGrey;;
-  border-radius: 20px;
-  margin-top: 50px
 }
 
 aside h2 {
@@ -70,6 +67,9 @@ aside h2 {
   height: 150px;
   line-height: 75px;
   font-size: 40px;
+  border: 5px solid DarkGrey;;
+  border-radius: 20px;
+  margin-top: 50px
 }
 
 #right {
@@ -80,6 +80,10 @@ aside h2 {
 #left {
   float: left;
   margin-left: 70px;
+}
+
+#reset {
+  line-height: 150px;
 }
 
 button {
