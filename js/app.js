@@ -74,22 +74,21 @@ litUp.checkWin = function(elements) {
 }
 
 litUp.modalMe = function() {
-  $('#modal').show();
+  $('#modal').toggle();
   $('#replay').on('click', litUp.replay.bind(this));
   $('#next').on('click', litUp.next.bind(this));
 }
 
 litUp.replay = function() {
-  $('#modal').toggleClass('modalOff');
   console.log(this.level)
   litUp.loadLevel();
+  $('#modal').toggle();
 }
 
 litUp.next = function() {
-  $('#modal').toggleClass('modalOff');
   this.level++;
-  console.log(this.level)
   litUp.loadLevel();
+  $('#modal').toggle();
 }
 
 $(function() { litUp.setup() });

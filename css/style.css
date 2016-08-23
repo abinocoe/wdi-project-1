@@ -69,11 +69,7 @@ aside h2 {
   line-height: 150px;
 }
 
-.modalOff {
-  display: none;
-}
-
-.modalOn {
+.modalShown {
   position: fixed;
     top: 50%;
     left: 50%;
