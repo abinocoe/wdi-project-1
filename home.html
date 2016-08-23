@@ -11,6 +11,10 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <h1>LIT UP</h1>
   <h3>Just turn off all the lights</h3>
+  <aside id="left">
+    <h2>Level<br>
+    <span id="lvl">1</span></h2>
+  </aside>
   <ul>
     <li></li>
     <li></li>
@@ -38,14 +42,15 @@
     <li></li>
     <li></li>
   </ul>
-  <aside>
-    <h2>Moves<br><span>0<span></h2>
+  <aside id="right">
+    <h2>Moves<br><span id="mvs">0<span></h2>
   </aside>
   <div id="modal" class="modalStyle">
     <p>#WINNING</p>
     <button id="replay">Replay</button>
     <button id ="next">Next Lvl</button>
   </div>
+  <audio id="audio" src="./sound/pop.wav"></audio>
 </head>
 <body>
 

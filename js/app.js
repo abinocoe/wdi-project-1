@@ -1,9 +1,10 @@
 var litUp = litUp || {};
 
 litUp.setup = function() {
+  $boxes = $('li');
+  $audio = $('#audio');
   this.moves  = 0;
   this.level  = 0;
-  $boxes = $('li');
   this.levels = [[3,7,8,9,11,13,15,16,17,21],
   [3,4,5,10,11,13,14,19,20,21],
   [1,5,7,8,10,14,16,17,19,23],
@@ -11,16 +12,16 @@ litUp.setup = function() {
   [2,7,10,11,13,14,17,22],
   [1,2,5,6,10,14,18,19,22,23],
   [2,3,5,6,9,11,12,13,14,16,17,19,23,24],
-  [0,2,8,10,14,16,22,24]];
-  litUp.loadLevel();
-  $('li').on("click", function() {
-    litUp.getIndex($boxes)
-  });
+  [0,2,8,10,14,16,22,24],
+  [3,4,5,6,7,8,11,12,13,16,17,18,19,20,21]];
+  $('li').on('click', function() {litUp.getIndex($boxes)});
   $('#replay').on('mouseup', litUp.replay.bind(this));
   $('#next').on('mouseup', litUp.next.bind(this));
+  litUp.loadLevel();
 };
 
 litUp.getIndex = function(buttons) {
+  $('#audio').get(0).play();
   var $index   = $('li').index(event.target);
   var a        = Math.sqrt(buttons.length);
   if ($index % a === 0) {
@@ -62,30 +63,34 @@ litUp.toggler = function(elements, array) {
 
 litUp.updateCount = function() {
   this.moves++;
-  $('span').text(this.moves);
+  $('#mvs').text(this.moves);
 }
 
 litUp.checkWin = function(elements) {
   if ($(elements).hasClass('light') === false) {
-    $('span').text("0");
+    $('#mvs').text('0');
     this.moves = 0;
     litUp.modalMe();
   }
 }
 
 litUp.modalMe = function() {
-  $('#modal').toggle();
+  $('#modal').show();
+  $($boxes).off();
 }
 
 litUp.replay = function() {
   litUp.loadLevel();
   $('#modal').hide();
+  $('li').on('click', function() {litUp.getIndex($boxes)});
 }
 
 litUp.next = function() {
   this.level++;
   litUp.loadLevel();
   $('#modal').hide();
+  $('#lvl').text(this.level+1);
+  $('li').on('click', function() {litUp.getIndex($boxes)});
 }
 
 $(function() { litUp.setup() });

@@ -49,7 +49,7 @@ li {
   border-radius: 5px;
   position: relative;
   float: left;
-  animation-name: flip;
+  animation-name: flip2;
   animation-duration: 2s;
   -webkit-transform-origin: top;
   transform-origin: top;
@@ -57,16 +57,29 @@ li {
 
 aside {
   display: inline-block;
-  position: absolute;
-  float: right;
-  height: 300px;
+  position: relative;
+  height: 150px;
   width: 150px;
+  border: 5px solid DarkGrey;;
+  border-radius: 20px;
+  margin-top: 50px
 }
 
 aside h2 {
   width: 150px;
   height: 150px;
-  line-height: 150px;
+  line-height: 75px;
+  font-size: 40px;
+}
+
+#right {
+  float: right;
+  margin-right: 70px;
+}
+
+#left {
+  float: left;
+  margin-left: 70px;
 }
 
 button {
@@ -94,7 +107,21 @@ button {
 }
 
 @-webkit-keyframes flip {
-  0%    { -webkit-transform: rotateX(270deg);    }
+  0%    { -webkit-transform: rotateX(270deg); }
+  25%   { -webkit-transform: rotateX(400deg); }
+  60%   { -webkit-transform: rotateX(330deg); }
+  100%  { -webkit-transform: rotateX(360deg); }
+}
+
+@-webkit-keyframes flip2 {
+  0%    { -webkit-transform: rotateX(430deg); }
+  25%   { -webkit-transform: rotateX(300deg); }
+  60%   { -webkit-transform: rotateX(390deg); }
+  100%  { -webkit-transform: rotateX(360deg); }
+}
+
+@-webkit-keyframes flip3 {
+  0%    { -webkit-transform: rotateX(270deg); }
   25%   { -webkit-transform: rotateX(400deg); }
   60%   { -webkit-transform: rotateX(330deg); }
   100%  { -webkit-transform: rotateX(360deg); }
