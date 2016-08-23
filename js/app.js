@@ -82,7 +82,6 @@ litUp.modalMe = function() {
 
 litUp.reset = function() {
   $('li').removeClass('light');
-  console.log(this);
   litUp.loadLevel();
 }
 

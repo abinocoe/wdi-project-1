@@ -84,6 +84,10 @@ aside h2 {
 
 #reset {
   line-height: 150px;
+  border-radius: 100%;
+  border: 5px solid #FFDD1B;
+  color: #FFDD1B;
+  background: grey;
 }
 
 button {

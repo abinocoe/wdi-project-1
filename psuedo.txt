@@ -12,6 +12,3 @@ Once a round has been completed, after a short delay will load the next round
 
 I began my javascript and wrote two vanilla functions to select all the boxes and then add event listeners to them.
 Then wrote one single line of jQuery that did the exact same thing.
-
-Sunday goals: Levels
-              Better Lights on Buttons
