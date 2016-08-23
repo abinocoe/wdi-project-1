@@ -69,8 +69,27 @@ aside h2 {
   line-height: 150px;
 }
 
+.modalOff {
+  display: none;
+}
+
+.modalOn {
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    height: auto;
+    z-index: 2000;
+    background-color: white;
+    border-radius: 10px;
+    display: unset;
+    backface-visibility: hidden;
+    transform: translateX(-50%) translateY(-50%);
+}
+
 @-webkit-keyframes flip {
-  0% { -webkit-transform: rotateX(270deg);    }
+  0%    { -webkit-transform: rotateX(270deg);    }
   25%   { -webkit-transform: rotateX(400deg); }
   60%   { -webkit-transform: rotateX(330deg); }
   100%  { -webkit-transform: rotateX(360deg); }

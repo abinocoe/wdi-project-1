@@ -1,10 +1,19 @@
 var litUp = litUp || {};
 
 litUp.setup = function() {
-  this.moves = 0;
-  this.level = 0;
-  var $boxes = $('li');
-  litUp.loadLevel($boxes, this.level);
+  this.moves  = 0;
+  this.level  = 0;
+  $boxes = $('li');
+  this.levels = [[3,7,8,9,11,13,15,16,17,21],
+  [3,4,5,10,11,13,14,19,20,21],
+  [1,5,7,8,10,14,16,17,19,23],
+  [3,4,6,7,8,9,10,12,14,15,16,17,18,20,21],
+  [2,7,10,11,13,14,17,22],
+  [1,2,5,6,10,14,18,19,22,23]
+  [0,2,8,10,14,16,22,24],
+  [2,3,5,6,9,11,12,13,14,16,17,19,23,24]];
+  litUp.loadLevel();
+  console.log(this.level)
   $('li').on("click", function() {
     litUp.getIndex($boxes)
   });
@@ -40,16 +49,8 @@ litUp.getIndex = function(buttons) {
   litUp.checkWin(buttons);
 }
 
-litUp.loadLevel = function(board, levelNo) {
-  this.levels = [[3,7,8,9,11,13,15,16,17,21],
-  [3,4,5,10,11,13,14,19,20,21],
-  [1,5,7,8,10,14,16,17,19,23],
-  [3,4,6,7,8,9,10,12,14,15,16,17,18,20,21],
-  [2,7,10,11,13,14,17,22],,
-  [1,2,5,6,10,14,18,19,22,23]
-  [0,2,8,10,14,16,22,24],
-  [2,3,5,6,9,11,12,13,14,16,17,19,23,24]];
-  litUp.toggler(board, this.levels[levelNo]);
+litUp.loadLevel = function() {
+  litUp.toggler($boxes, this.levels[this.level]);
 }
 
 litUp.toggler = function(elements, array) {
@@ -68,9 +69,27 @@ litUp.checkWin = function(elements) {
     console.log("you've won!");
     $('span').text("0");
     this.moves = 0;
-    this.level++;
-    litUp.loadLevel(elements, this.level);
+    litUp.modalMe();
   }
+}
+
+litUp.modalMe = function() {
+  $('#modal').show();
+  $('#replay').on('click', litUp.replay.bind(this));
+  $('#next').on('click', litUp.next.bind(this));
+}
+
+litUp.replay = function() {
+  $('#modal').toggleClass('modalOff');
+  console.log(this.level)
+  litUp.loadLevel();
+}
+
+litUp.next = function() {
+  $('#modal').toggleClass('modalOff');
+  this.level++;
+  console.log(this.level)
+  litUp.loadLevel();
 }
 
 $(function() { litUp.setup() });
