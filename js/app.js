@@ -1,8 +1,8 @@
 var litUp = litUp || {};
 
 litUp.setup = function() {
-  $boxes = $('li');
-  $audio = $('#audio');
+  $boxes      = $('li');
+  $audio      = $('#audio');
   this.moves  = 0;
   this.level  = 0;
   this.levels = [[3,7,8,9,11,13,15,16,17,21],
@@ -77,8 +77,6 @@ litUp.updateCount = function() {
 
 litUp.checkWin = function(elements) {
   if ($(elements).hasClass('light') === false) {
-    $('#mvs').text('0');
-    this.moves = 0;
     litUp.modalMe();
   }
 }
@@ -89,11 +87,15 @@ litUp.modalMe = function() {
 }
 
 litUp.reset = function() {
+  $('#mvs').text('0');
+  this.moves = 0;
   $('li').removeClass('light');
   litUp.loadLevel();
 }
 
 litUp.replay = function() {
+  $('#mvs').text('0');
+  this.moves = 0;
   litUp.loadLevel();
   $('#modal').hide();
   $('li').on('click', function() {litUp.getIndex($boxes)});
@@ -101,6 +103,8 @@ litUp.replay = function() {
 
 litUp.next = function() {
   this.level++;
+  $('#mvs').text('0');
+  this.moves = 0;
   litUp.loadLevel();
   $('#modal').hide();
   $('#lvl').text(this.level+1);
