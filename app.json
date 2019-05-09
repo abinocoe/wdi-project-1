@@ -1,22 +1,18 @@
 {
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/php"
     }
   ],
   "description": "WDI project 1 JavaScript lights game",
-  "env": {
-  },
+  "env": {},
   "formation": {
     "web": {
       "quantity": 1
     }
   },
   "name": "Lit Up",
-  "scripts": {
-  },
-  "stack": "cedar-14"
+  "scripts": {},
+  "stack": "heroku-18"
 }
