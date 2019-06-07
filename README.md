@@ -1,4 +1,4 @@
-#LIT UP
+# LIT UP
 
 **First Independent Project for General Assembly WDI22(Hashtag)**
 
